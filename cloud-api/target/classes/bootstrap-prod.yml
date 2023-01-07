@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://106.52.150.231:8848
+        service: cloud-api
+      config:
+        server-addr: http://106.52.150.231:8848
+        file-extension: yaml
+student:
+  age: 18
+  name: "zjl-local"
+  address: 我也不知道啊

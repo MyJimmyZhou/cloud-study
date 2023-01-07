@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: cloud-api
+  profiles:
+    active: prod
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://106.52.150.231:8848
+        service: cloud-api
+      config:
+        server-addr: http://106.52.150.231:8848
+        file-extension: yaml
+        refresh-enabled: true
+        group: DEFAULT_GROUP
