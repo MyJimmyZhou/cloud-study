@@ -1,7 +1,10 @@
 package com.zjl.springsecurity.service;
 
-import org.springframework.security.core.userdetails.UserDetails;
+
+import com.zjl.springsecurity.dto.UserDto;
+import com.zjl.springsecurity.entity.User;
 
 public interface UserService {
-    public UserDetails loadUserByUserName(String userName);
+    User loadUserByUserName(String userName);
+    User register(UserDto userDto);
 }

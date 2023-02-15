@@ -1,0 +1,20 @@
+server:
+  port: 9201
+service-url:
+  user-service: http://localhost:8082
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    nacos:
+      server-addr: http://106.52.150.231:8848
+      lower-case-service-id: true #使用小写服务名，默认是大写
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: cloud-api #路由的ID
+          uri: lb://cloud-api #匹配后路由地址
+          predicates: # 断言，路径相匹配的进行路由
+            - Path=/cloud-api/**
