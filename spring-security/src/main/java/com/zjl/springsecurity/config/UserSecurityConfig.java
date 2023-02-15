@@ -23,9 +23,12 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userService;
     @Autowired
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+    @Autowired
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
@@ -46,20 +49,30 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/user/login", "/user/register")
                 .permitAll()
+                .antMatchers(HttpMethod.GET, // 允许对于网站静态资源的无授权访问
+                        "/",
+                        "/**/v3/api-docs",
+                        "/swagger**",
+                        "/swagger-ui/**",
+                        "/swagger-ui/index.html",
+                        "/*.html",
+                        "/favicon.ico",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js",
+                        "/swagger-resources/**",
+                        "/v2/api-docs/**"
+                )
+                .permitAll()
                 .antMatchers(HttpMethod.OPTIONS)
                 .permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .and().httpBasic();
         http.headers().cacheControl();
-        http.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.exceptionHandling()
                 .accessDeniedHandler(restfulAccessDeniedHandler)
                 .authenticationEntryPoint(restAuthenticationEntryPoint);
-    }
-
-    @Bean
-    public Filter jwtAuthenticationTokenFilter() {
-        return new JwtAuthenticationTokenFilter();
     }
 }

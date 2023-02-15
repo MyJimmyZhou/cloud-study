@@ -4,6 +4,7 @@ import com.zjl.springsecurity.common.api.CommonResult;
 import com.zjl.springsecurity.dto.UserDto;
 import com.zjl.springsecurity.entity.User;
 import com.zjl.springsecurity.service.UserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PostAuthorize;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("user")
+@Api(tags = "UserController", description = "用户测试模块")
 public class UserController {
     @Autowired
     private UserService userService;
