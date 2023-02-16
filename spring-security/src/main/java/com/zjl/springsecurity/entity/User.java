@@ -14,4 +14,6 @@ public class User {
     @TableField("user_name")
     private String userName;
     private String password;
+    private String roles;
+    private String authorities;
 }
