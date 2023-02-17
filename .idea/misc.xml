@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/spring-security/pom.xml" />
         <option value="$PROJECT_DIR$/spring-mabatis/pom.xml" />
         <option value="$PROJECT_DIR$/spring-mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-task/pom.xml" />
       </list>
     </option>
   </component>
