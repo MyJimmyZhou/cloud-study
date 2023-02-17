@@ -11,6 +11,7 @@
         <module name="cloud-api" />
         <module name="demo" />
         <module name="cloud-gateway" />
+        <module name="spring-mybatis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +23,7 @@
       <module name="cloud-api" options="-parameters" />
       <module name="cloud-gateway" options="-parameters" />
       <module name="demo" options="-parameters" />
+      <module name="spring-mybatis" options="-parameters" />
       <module name="spring-security" options="-parameters" />
     </option>
   </component>
