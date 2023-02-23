@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/spring-mabatis/pom.xml" />
         <option value="$PROJECT_DIR$/spring-mybatis/pom.xml" />
         <option value="$PROJECT_DIR$/spring-task/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mq/pom.xml" />
       </list>
     </option>
   </component>
